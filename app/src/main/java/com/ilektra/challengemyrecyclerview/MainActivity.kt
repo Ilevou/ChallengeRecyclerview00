@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import com.ilektra.challengemyrecyclerview.R
+import com.squareup.picasso.Picasso
 
 class MainActivity : AppCompatActivity(){
     private lateinit var fab: FloatingActionButton
@@ -18,6 +19,7 @@ class MainActivity : AppCompatActivity(){
     private val data = ArrayList<String>()
     private lateinit var button: Button
     private lateinit var adapter: MyAdapter
+    private lateinit var imageView: ImageView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,7 +29,7 @@ class MainActivity : AppCompatActivity(){
         editText = findViewById(R.id.editTextAddItems)
         button = findViewById(R.id.button)
         fab = findViewById(R.id.floatingActionButton)
-
+        imageView = findViewById(R.id.imageView)
         button.setOnClickListener { view ->
 
 
@@ -57,7 +59,7 @@ class MainActivity : AppCompatActivity(){
 
         }
 
-
+        Picasso.get().load("https://i.imgur.com/DvpvklR.png").into(imageView);
         setRecyclerView()
 
 
