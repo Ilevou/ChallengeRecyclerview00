@@ -28,6 +28,11 @@ class MyAdapter(private val data: ArrayList<String>) : RecyclerView.Adapter<MyAd
         }
 
     }
+    fun deleteEverything() {
+        data.clear()
+        notifyDataSetChanged()
+
+    }
 
 
 

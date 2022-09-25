@@ -8,10 +8,12 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import com.ilektra.challengemyrecyclerview.R
 
 class MainActivity : AppCompatActivity(){
+    private lateinit var fab: FloatingActionButton
     private lateinit var editText: EditText
     private val data = ArrayList<String>()
     private lateinit var button: Button
@@ -24,6 +26,7 @@ class MainActivity : AppCompatActivity(){
         setContentView(R.layout.activity_main)
         editText = findViewById(R.id.editTextAddItems)
         button = findViewById(R.id.button)
+        fab = findViewById(R.id.floatingActionButton)
 
         button.setOnClickListener { view ->
 
@@ -36,6 +39,8 @@ class MainActivity : AppCompatActivity(){
                 }  else {
                     data.add(message)
                     data.sort()
+                    adapter.notifyDataSetChanged()
+
 
                     Snackbar.make(view, "Item added successfully  ", Snackbar.LENGTH_LONG)
                         .setAction("Item added successfully", null)
@@ -47,10 +52,13 @@ class MainActivity : AppCompatActivity(){
 
         }
 
+        fab.setOnClickListener {
+            adapter.deleteEverything()
+
+        }
 
 
-
-
+        setRecyclerView()
 
 
     }
@@ -64,9 +72,5 @@ class MainActivity : AppCompatActivity(){
         // Setting the Adapter with the recyclerview
         recyclerview.adapter = adapter
         recyclerview.setHasFixedSize(true)
-    }
-    class CustomClass {
-        var item: String = ""
-
     }
 }
