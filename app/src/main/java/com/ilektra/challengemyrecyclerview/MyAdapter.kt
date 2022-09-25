@@ -7,9 +7,8 @@ import android.widget.ImageView
 
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-
-
-
+import com.squareup.picasso.NetworkPolicy
+import com.squareup.picasso.Picasso
 
 
 class MyAdapter(private val data: ArrayList<String>) : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
@@ -18,7 +17,11 @@ class MyAdapter(private val data: ArrayList<String>) : RecyclerView.Adapter<MyAd
             val title = view.findViewById<TextView>(R.id.textView)
             val imageView = view.findViewById<ImageView>(R.id.imageView)
 
-
+            Picasso.get()
+                //+ System.currentTimeMillis() it is calling every millis a different url.
+                .load("https://api.lorem.space/image/movie?=" + System.currentTimeMillis())
+                .networkPolicy(NetworkPolicy.NO_STORE)
+                .into(imageView)
 
             title.text = property
             view.setOnClickListener { deleteItem(index) }

@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity(){
                     adapter.notifyDataSetChanged()
 
 
-                    Snackbar.make(view, "Item added successfully  ", Snackbar.LENGTH_LONG)
+                    Snackbar.make(view, "Item added successfully  ", Snackbar.LENGTH_SHORT)
                         .setAction("Item added successfully", null)
                         .show()
                 }
