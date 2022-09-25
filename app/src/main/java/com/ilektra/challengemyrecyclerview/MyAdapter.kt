@@ -9,11 +9,13 @@ import androidx.recyclerview.widget.RecyclerView
 
 class MyAdapter(private val data: ArrayList<String>) : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
     inner class MyViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
-        fun bind(property: String, index: Int) {
+        fun bind(property: String) {
             val title = view.findViewById<TextView>(R.id.textView)
 
 
             title.text = property
+
+
 
         }
 
@@ -32,7 +34,7 @@ class MyAdapter(private val data: ArrayList<String>) : RecyclerView.Adapter<MyAd
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.bind(data[position], position)
+        holder.bind(data[position])
     }
 
 
