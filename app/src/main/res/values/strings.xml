@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ChallengeMyRecyclerView</string>
+    <string name="add_an_item" translatable="false">Add an item</string>
+
 </resources>

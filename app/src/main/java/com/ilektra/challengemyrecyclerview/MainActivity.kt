@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity(){
         setContentView(R.layout.activity_main)
         editText = findViewById(R.id.editTextAddItems)
         button = findViewById(R.id.button)
+
         button.setOnClickListener { view ->
 
 
@@ -35,7 +36,6 @@ class MainActivity : AppCompatActivity(){
                 }  else {
                     data.add(message)
                     data.sort()
-                    adapter.notifyDataSetChanged()
 
                     Snackbar.make(view, "Item added successfully  ", Snackbar.LENGTH_LONG)
                         .setAction("Item added successfully", null)
@@ -58,8 +58,15 @@ class MainActivity : AppCompatActivity(){
         // getting the recyclerview by its id
         val recyclerview = findViewById<RecyclerView>(R.id.RecyclerView)
         // this creates a vertical layout Manager
+        recyclerview.layoutManager = LinearLayoutManager(this)
+        // This will pass the ArrayList to our Adapter
+        adapter = MyAdapter(data)
         // Setting the Adapter with the recyclerview
         recyclerview.adapter = adapter
         recyclerview.setHasFixedSize(true)
+    }
+    class CustomClass {
+        var item: String = ""
+
     }
 }

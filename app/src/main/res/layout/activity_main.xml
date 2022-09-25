@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#8C9EFF"
+    android:backgroundTint="@color/white"
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+    tools:ignore="ExtraText">
+
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view_item"
         android:layout_width="match_parent"
@@ -15,33 +20,74 @@
         tools:ignore="MissingConstraints" />
 
 
+    // android:src="@drawable/img_0677"
+    //android:contentDescription="@drawable/img_0677"
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="MissingConstraints" />
+
+
     <EditText
         android:id="@+id/editTextAddItems"
         android:layout_width="305dp"
         android:layout_height="62dp"
         android:ems="10"
+        android:hint="@string/add_an_item"
         android:inputType="textPersonName"
         android:textColorHint="@color/black"
         android:textColor="@color/black"
         android:textStyle="bold|italic"
         android:visibility="visible"
-        tools:listitem="@layout/card_view_design"
-         />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add"
-         />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"  />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/RecyclerView"
         android:layout_width="398dp"
         android:layout_height="624dp"
         android:onClick="@string/app_name"
+        app:layout_constraintTop_toBottomOf="@+id/editTextAddItems"
         tools:ignore="MissingConstraints,OnClick"
         tools:itemCount="100"
         tools:layout_editor_absoluteX="6dp"
-         />
+        tools:listitem="@layout/card_view_design" />
 
-</LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="55dp"
+        android:layout_height="54dp"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:clickable="true"
+        android:onClick="Delete"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:rippleColor="@color/design_default_color_error"
+        app:srcCompat="@android:drawable/ic_delete"
+        tools:ignore="OnClick" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

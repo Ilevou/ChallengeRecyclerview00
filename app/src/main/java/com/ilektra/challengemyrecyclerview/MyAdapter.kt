@@ -3,17 +3,25 @@ package com.ilektra.challengemyrecyclerview
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 
+
+
+
 class MyAdapter(private val data: ArrayList<String>) : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
     inner class MyViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
-        fun bind(property: String) {
+        fun bind(property: String, index: Int) {
             val title = view.findViewById<TextView>(R.id.textView)
+            val imageView = view.findViewById<ImageView>(R.id.imageView)
+
 
 
             title.text = property
+            view.setOnClickListener { deleteItem(index) }
 
 
 
@@ -34,8 +42,11 @@ class MyAdapter(private val data: ArrayList<String>) : RecyclerView.Adapter<MyAd
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.bind(data[position])
+        holder.bind(data[position], position)
     }
-
+    fun deleteItem(index: Int) {
+        data.removeAt(index)
+        notifyDataSetChanged()
+    }
 
 }
